@@ -8,8 +8,9 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class View extends JPanel implements PropertyChangeListener {
-
-    private Model model;
+    
+    // changed from private to protected
+    protected Model model;
     private int row, col; // x & y coordinates of upper-left corner of bounding box
 
     public View(Model model) {
