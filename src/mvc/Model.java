@@ -8,12 +8,12 @@ public class Model extends Bean{
     private String fileName;
 
     public Model(){
-        unsavedChanges = false;
-        fileName = null;
+        this.unsavedChanges = false;
+        this.fileName = null;
     }
 
     public void changed(){
-        unsavedChanges = true;
+        this.unsavedChanges = true;
         firePropertyChange("unsavedChanges", false , true);
 
     }
