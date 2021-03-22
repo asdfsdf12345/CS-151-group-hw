@@ -26,7 +26,7 @@
   </component>
   <component name="RunManager">
     <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -47,7 +47,7 @@
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -66,9 +66,13 @@
     </recent_temporary>
   </component>
   <component name="WindowStateProjectService">
-    <state x="700" y="546" key="FileChooserDialogImpl" timestamp="1615419119077">
+    <state x="765" y="246" key="#com.intellij.ide.util.MemberChooser" timestamp="1616449200643">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="700" y="546" key="FileChooserDialogImpl/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1615419119077" />
+    <state x="765" y="246" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1616449200643" />
+    <state x="629" y="468" key="FileChooserDialogImpl" timestamp="1616350887077">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="629" y="468" key="FileChooserDialogImpl/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1616350887077" />
   </component>
 </project>
