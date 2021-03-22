@@ -1,7 +1,5 @@
 package mvc;
 
-import javax.swing.*;
-
-public class View extends JPanel {
-
+public class View {
+    
 }
