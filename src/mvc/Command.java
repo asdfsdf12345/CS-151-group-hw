@@ -1,9 +1,15 @@
 package mvc;
 
 public class Command {
-<<<<<<< HEAD
 
+    protected Model model=new Model();
 
-=======
->>>>>>> parent of 3f64434 (most of mvc and some parts of minefield)
+    public Command(Model model){
+        this.model=model;
+    }
+
+    public void execute(){
+
+    }
+
 }

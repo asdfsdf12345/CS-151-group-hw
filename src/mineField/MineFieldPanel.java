@@ -76,7 +76,7 @@ public class MineFieldPanel extends JPanel implements ActionListener {
 
         this.setLayout((new GridLayout(1, 2)));
         this.add(controlPanel);
-        this.add(view);
+        this.add(this.view);
 
         this.frame.setVisible(true);
     }
@@ -96,19 +96,19 @@ public class MineFieldPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String cmmd = e.getActionCommand();
         if (cmmd == "North") {
-            
+
         } else if (cmmd == "East") {
-           
+
         } else if (cmmd == "West") {
-            
+
         } else if(cmmd == "South") {
-            
+
         } else if(cmmd == "Clear") {
-            
+
         } else if(cmmd == "Pen") {
-            
+
         } else if (cmmd == "Color") {
-            
+
         } else if (cmmd == "Save") {
             try {
                 String fName = Utilities.getFileName((String)null, false);
@@ -124,14 +124,14 @@ public class MineFieldPanel extends JPanel implements ActionListener {
                     String fName = Utilities.getFileName((String)null, true);
                     ObjectInputStream is = new ObjectInputStream(new FileInputStream(fName));
                     this.mineField = (MineField)is.readObject();
-                    this.view.setTurtle(mineField);
+                    this.view.setTurtle(this.mineField);
                     is.close();
                 } catch (Exception var5) {
                     Utilities.error(var5.getMessage());
                 }
             } else if (cmmd == "New") {
-                mineField = new MineField();
-                this.view.setMineField(mineField);
+                MineField newmineField = new MineField();
+                this.view.setMineField(newmineField);
             } else if (cmmd == "Quit") {
                 System.exit(1);
             } else if (cmmd == "About") {

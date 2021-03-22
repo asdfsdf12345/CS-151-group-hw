@@ -13,9 +13,24 @@ public class Model extends Bean{
     }
 
     public void changed(){
-        this.unsavedChanges = true;
+        unsavedChanges = true;
         firePropertyChange("unsavedChanges", false , true);
 
+    }
+
+    public boolean getUnsavedChanges() {
+        return unsavedChanges;
+    }
+
+    public void setUnsavedChanges(boolean s){
+        this.unsavedChanges= s;
+    }
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String newFile) {
+        fileName= newFile;
     }
 
 
