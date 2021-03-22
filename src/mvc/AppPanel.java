@@ -5,7 +5,6 @@ import tools.Utilities;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeListener;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -51,11 +50,11 @@ public class AppPanel extends JPanel implements ActionListener, PropertyChangeLi
         JMenuBar result = new JMenuBar();
         // add file, edit, and help menus
         JMenu fileMenu =
-                Utilities.makeMenu("File", new String[] {"New",  "Save", "SaveAs", "Open", "Quit"} , this);
+                Utilities.makeMenu("File", new String[] {"New",  "Save", "SaveAs", "Open", "Quit"}, this);
         result.add(fileMenu);
 
         JMenu editMenu =
-                Utilities.makeMenu("Edit", factory.getEditCommands(), this);
+                Utilities.makeMenu("Edit", new String[] {"Change"}, this);
         result.add(editMenu);
 
         JMenu helpMenu =
@@ -105,10 +104,12 @@ public class AppPanel extends JPanel implements ActionListener, PropertyChangeLi
                 Utilities.inform(factory.about());
             } else if (cmmd == "Help") {
                 Utilities.inform(factory.getHelp());
+            } else if (cmmd == "Change") {
+                model.change();
             } else {
                 //Utilities.error("Unrecognized command: " + cmmd);
                 // from the edit menu
-                Command command = factory.makeEditCommand(model, cmmd);
+                Command command = makeEditCommand(model, cmmd);
                 command.execute();
             }
         } catch(Exception e) {
