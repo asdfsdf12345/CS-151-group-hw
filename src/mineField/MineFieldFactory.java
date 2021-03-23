@@ -18,7 +18,11 @@ public class MineFieldFactory implements AppFactory{
     };
 
     public Command makeEditCommand(Model model, String type){
+<<<<<<< Updated upstream
         return new MoveCommand(model);
+=======
+        return new MoveCommand(model,type);
+>>>>>>> Stashed changes
     };
 
     public String getTitle(){
