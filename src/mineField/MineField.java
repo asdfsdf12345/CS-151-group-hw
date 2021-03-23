@@ -5,21 +5,23 @@ import tools.Utilities;
 
 public class MineField extends Model{
 
-    private int N= 20;
-    private Patch[][] mines = new Patch[N][N];
-    private int posX=0;
-    private int posY=0;
+
+    private Patch[][] mines = new Patch[20][20];;
+    private int posX;
+    private int posY;
     private double percentMined = .05;
     private int totalMines = 0;
+    private boolean gameOver=false;
 
     public MineField() {
 
+        placeMines();
     }
 
     public void placeMines(){
         for(int i =0; i< 20; i++){
             for(int j =0; j<20; j++){
-                if(totalMines< N*N*percentMined && Math.random()<.05){
+                if(totalMines< 20 && Math.random()<.05){
                         mines[i][j]=new Patch(true);
                         totalMines++;
                     }
@@ -29,68 +31,63 @@ public class MineField extends Model{
         mines[19][19].setEnd(true);
     }
 
-    public void move(String cmmd){
-        switch(cmmd){
-            case "NW":
-                assert (posY > 0 && posX > 0);
-                    posY -= 1;
-                    posX -= 1;
+    public void move(String cmmd) {
+        System.out.println(posX);
+        System.out.println(posY);
 
-                //else
-                   // Utilities.inform("You cannot move off of the minefield.");
+        if(!gameOver){
 
+        if (posX+1 > 0 && posX -1 < 20 && posY+1 >=0 && posY -1< 20) {
+            if (cmmd == "NW") {
+                posX = posX - 1;
+                posY = posY - 1;
+            }
+            else if (cmmd == "NE") {
+                posX = posX + 1;
+                posY = posY - 1;
+            }
+            else if (cmmd == "N")
+                posY = posY - 1;
 
-            case "N":
-                if(posY > 0)
-                    posY -= 1;
-                else
-                    Utilities.inform("You cannot move off of the minefield.");
+            else if (cmmd == "E")
+                posX = posX + 1;
 
-            case "NE":
-                if(posY > 0 && posX < 19) {
-                    posY -= 1;
-                    posX += 1;
-                }
-                else
-                    Utilities.inform("You cannot move off of the minefield.");
+            else if (cmmd == "S")
+                posY = posY + 1;
 
+            else if (cmmd == "W")
+                posX = posX - 1;
 
-            case "W":
-                if(posX > 0)
-                    posX -= 1;
-                else
-                    Utilities.inform("You cannot move off of the minefield.");
+            else if (cmmd == "SE") {
+                posX = posX + 1;
+                posY = posY + 1;
+            }
 
-            case "E":
-                if(posX < 19)
-                    posX += 1;
-                else
-                    Utilities.inform("You cannot move off of the minefield.");
+            else if (cmmd == "SW") {
+                posX = posX - 1;
+                posY = posY + 1;
+            }
 
-            case "SW":
-                if(posY < 19 && posX > 0) {
-                    posY += 1;
-                    posX -= 1;
-                }
-                else
-                    Utilities.inform("You cannot move off of the minefield.");
-
-            case "SE":
-                if(posY < 19 && posX < 19) {
-                    posY += 1;
-                    posX += 1;
-                }
-                else
-                    Utilities.inform("You cannot move off of the minefield.");
-
-            case "S":
-                if(posY < 19)
-                    posY += 1;
-                else
-                    Utilities.inform("You cannot move off of the minefield.");
 
         }
+
+        if(posX ==19 && posY==19) {
+                Utilities.inform("YOU WON!");
+                gameOver = true;
+        }
+
+        if(mines[posX][posY].getMined()) {
+                Utilities.inform("GAME OVER!");
+                gameOver = true;
+        }
+        else
+            Utilities.error("You cannot move out of bounds");
     }
+        else
+            Utilities.error("The game is over");
+    }
+
+
 
     public int getPosX() {
         return posX;
@@ -101,8 +98,8 @@ public class MineField extends Model{
     }
 
     public void numAdjacentMines(){
-        for(int i = 0; i<N; i++){
-            for(int j=0; j<N; j++){
+        for(int i = 0; i<20; i++){
+            for(int j=0; j<20; j++){
                 mines[i][j].setAdjmines(this.countMines(i,j));
             }
         }

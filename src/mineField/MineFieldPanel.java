@@ -7,7 +7,7 @@ import java.awt.*;
 import java.beans.PropertyChangeEvent;
 
 public class MineFieldPanel extends AppPanel {
-
+    protected JLabel[][] grid;
     private JButton NW;
     private JButton N;
     private JButton NE;
@@ -17,43 +17,78 @@ public class MineFieldPanel extends AppPanel {
     private JButton S;
     private JButton SE;
 
+
     public MineFieldPanel (AppFactory factory) {
 
         super(factory);
-        /*
-        NW = new JButton("NW");
-        NW.addActionListener(this);
+        MineField minefield = (MineField) model;
+        minefield.addPropertyChangeListener(this);
+        controlPanel.setLayout(new GridLayout(4, 1));
 
+        JPanel p = new JPanel();
         N = new JButton("N");
         N.addActionListener(this);
+        p.add(N);
+        controlPanel.add(p);
 
+        p = new JPanel();
+        NW = new JButton("NW");
+        NW.addActionListener(this);
+        p.add(NW);
+        controlPanel.add(p);
+
+        p = new JPanel();
         NE = new JButton("NE");
         NE.addActionListener(this);
+        p.add(NE);
+        controlPanel.add(p);
 
+        p = new JPanel();
         W = new JButton("W");
         W.addActionListener(this);
+        p.add(W);
+        controlPanel.add(p);
 
+        p = new JPanel();
         E = new JButton("E");
         E.addActionListener(this);
+        p.add(E);
+        controlPanel.add(p);
 
-        SW = new JButton("SW");
-        SW.addActionListener(this);
-
-        S = new JButton("S");
-        S.addActionListener(this);
-
+        p = new JPanel();
         SE = new JButton("SE");
         SE.addActionListener(this);
-        */
+        p.add(SE);
+        controlPanel.add(p);
+
+        p = new JPanel();
+        SW = new JButton("SW");
+        SW.addActionListener(this);
+        p.add(SW);
+        controlPanel.add(p);
+
+        p = new JPanel();
+        S = new JButton("S");
+        S.addActionListener(this);
+        p.add(S);
+        controlPanel.add(p);
+
+        view.setLayout(new GridLayout(20,20));
+
+        grid = new JLabel[20][20];
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+
+                grid[i][j] = new JLabel("?", SwingConstants.LEFT);
+                grid[i][j].setBackground(Color.GRAY);
+                grid[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                view.add(grid[i][j]);
+
+            }
+        }
 
     }
-    /*
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        super.propertyChange(evt);
 
-    }
-*/
     public static void main(String[] args) {
         AppFactory factory = new MineFieldFactory();
         AppPanel panel = new MineFieldPanel(factory);
