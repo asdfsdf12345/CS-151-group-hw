@@ -111,7 +111,7 @@ public class AppPanel extends JPanel implements ActionListener, PropertyChangeLi
     public void propertyChange(PropertyChangeEvent evt) {
 
     }
-    
+
     public Model getModel() {
         return model;
     }

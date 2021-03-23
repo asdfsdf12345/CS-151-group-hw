@@ -17,7 +17,7 @@ public class StoplightPanel extends AppPanel {
         change.addActionListener(this);
         //JPanel buttonPanel = new JPanel();
         //buttonPanel.setLayout(new FlowLayout());
-        //this.controlPanel.add(change);
+        this.controlPanel.add(change);
         //add(buttonPanel);
         //add(view);
     }
