@@ -22,6 +22,7 @@ public class MineFieldView extends View {
                 grid[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
             }
         }
+        repaint();
     }
 
 
@@ -29,6 +30,7 @@ public class MineFieldView extends View {
     public void propertyChange(PropertyChangeEvent arg0) {
         super.propertyChange(arg0);
         grid[mineField.getPosX()][mineField.getPosY()].setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        int adjMines = mineField.countMines(mineField.getPosX(), mineField.getPosY());
+        grid[mineField.getPosX()][mineField.getPosY()].setText(String.valueOf(adjMines));
     }
 }
-
