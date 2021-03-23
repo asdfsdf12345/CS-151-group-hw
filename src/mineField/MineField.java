@@ -37,7 +37,8 @@ public class MineField extends Model{
 
         if(!gameOver){
 
-        if (posX+1 > 0 && posX -1 < 20 && posY+1 >=0 && posY -1< 20) {
+            
+        (posX+1 > 0 && posX -1 < 20 && posY+1 >=0 && posY -1< 20) {
             if (cmmd == "NW") {
                 posX = posX - 1;
                 posY = posY - 1;
