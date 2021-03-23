@@ -1,15 +1,13 @@
 package mvc;
 
-public class Command {
+abstract public class Command {
+    public Model model;
 
-    protected Model model=new Model();
-
-    public Command(Model model){
-        this.model=model;
+    public Command(Model model) {
+        this.model = model;
     }
 
-    public void execute(){
-
+    public void execute() {
     }
 
 }
