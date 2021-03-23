@@ -20,32 +20,40 @@ public class MineFieldPanel extends AppPanel {
     public MineFieldPanel (AppFactory factory) {
 
         super(factory);
+        /*
         NW = new JButton("NW");
         NW.addActionListener(this);
+
         N = new JButton("N");
         N.addActionListener(this);
+
         NE = new JButton("NE");
         NE.addActionListener(this);
+
         W = new JButton("W");
         W.addActionListener(this);
+
         E = new JButton("E");
         E.addActionListener(this);
+
         SW = new JButton("SW");
         SW.addActionListener(this);
+
         S = new JButton("S");
         S.addActionListener(this);
+
         SE = new JButton("SE");
         SE.addActionListener(this);
-
+        */
 
     }
-
+    /*
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         super.propertyChange(evt);
 
     }
-
+*/
     public static void main(String[] args) {
         AppFactory factory = new MineFieldFactory();
         AppPanel panel = new MineFieldPanel(factory);

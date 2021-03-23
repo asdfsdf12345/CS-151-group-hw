@@ -32,12 +32,12 @@ public class MineField extends Model{
     public void move(String cmmd){
         switch(cmmd){
             case "NW":
-                if(posY > 0 && posX > 0) {
+                assert (posY > 0 && posX > 0);
                     posY -= 1;
                     posX -= 1;
-                }
-                else
-                    Utilities.inform("You cannot move off of the minefield.");
+
+                //else
+                   // Utilities.inform("You cannot move off of the minefield.");
 
 
             case "N":

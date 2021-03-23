@@ -18,7 +18,7 @@ public class MineFieldFactory implements AppFactory{
     };
 
     public Command makeEditCommand(Model model, String type){
-        return new MoveCommand(model);
+        return new MoveCommand(model,type);
     };
 
     public String getTitle(){
