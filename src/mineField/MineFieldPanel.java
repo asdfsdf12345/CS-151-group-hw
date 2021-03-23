@@ -86,6 +86,11 @@ public class MineFieldPanel extends AppPanel {
 
             }
         }
+        
+        grid[0][0].setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        grid[19][19].setBorder(BorderFactory.createLineBorder((Color.GREEN)));
+
+        grid[0][0].setText(String.valueOf(minefield.countMines(0,0)));
 
     }
 
