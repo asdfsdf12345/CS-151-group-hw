@@ -2,7 +2,7 @@ package mvc;
 
 import tools.*;
 
-public class Model extends Bean{
+abstract public class Model extends Bean{
 
     private boolean unsavedChanges;
     private String fileName;
@@ -25,12 +25,13 @@ public class Model extends Bean{
     public void setUnsavedChanges(boolean s){
         this.unsavedChanges= s;
     }
+    
     public String getFileName() {
-        return fileName;
+        return this.fileName;
     }
 
     public void setFileName(String newFile) {
-        fileName= newFile;
+        this.fileName = newFile;
     }
 
 
