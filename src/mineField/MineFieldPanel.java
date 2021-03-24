@@ -73,24 +73,6 @@ public class MineFieldPanel extends AppPanel {
         p.add(S);
         controlPanel.add(p);
 
-        view.setLayout(new GridLayout(20,20));
-
-        grid = new JLabel[20][20];
-        for (int i = 0; i < 20; i++) {
-            for (int j = 0; j < 20; j++) {
-
-                grid[i][j] = new JLabel("?", SwingConstants.LEFT);
-                grid[i][j].setBackground(Color.GRAY);
-                grid[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
-                view.add(grid[i][j]);
-
-            }
-        }
-        
-        grid[0][0].setBorder(BorderFactory.createLineBorder(Color.WHITE));
-        grid[19][19].setBorder(BorderFactory.createLineBorder((Color.GREEN)));
-
-        grid[0][0].setText(String.valueOf(minefield.countMines(0,0)));
 
     }
 
