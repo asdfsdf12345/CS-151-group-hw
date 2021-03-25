@@ -1,20 +1,18 @@
 package mvc;
 
-import tools.Utilities;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.beans.*;
 import java.io.*;
 import javax.swing.*;
-//import javax.swing.text.Utilities;
 
-public class AppPanel extends JPanel implements ActionListener, PropertyChangeListener {
+public class AppPanel extends JPanel implements PropertyChangeListener, ActionListener {
 
     protected Model model;
+    protected AppFactory factory;
     protected View view;
     protected JPanel controlPanel;
-    protected AppFactory factory;
 
     private JFrame frame;
     public static int FRAME_WIDTH = 500;
@@ -68,7 +66,9 @@ public class AppPanel extends JPanel implements ActionListener, PropertyChangeLi
         return result;
     }
 
-    public void display() { frame.setVisible(true); }
+    public void display() {
+        frame.setVisible(true);
+    }
 
     public void actionPerformed(ActionEvent ae) {
         try {
@@ -78,17 +78,18 @@ public class AppPanel extends JPanel implements ActionListener, PropertyChangeLi
             } else if (cmmd == "SaveAs") {
                 Utilities.save(model, true);
             } else if (cmmd == "Open") {
-                Model openModel = Utilities.open(model);
-                setModel(openModel);
+                this.model = Utilities.open(model);
+                this.view.setModel(model);
             } else if (cmmd == "New") {
-                Utilities.saveChanges(model);
-                setModel(factory.makeModel());
-                //model = factory.makeModel();
-                //view.setModel(model);
+                if(Utilities.saveChanges(model)) {
+                    model = factory.makeModel();
+                    view.setModel(model);
+                }
                 model.setUnsavedChanges(false);
             } else if (cmmd == "Quit") {
-                Utilities.saveChanges(model);
-                System.exit(1);
+                if(Utilities.saveChanges(model)) {
+                    System.exit(1);
+                }
             } else if (cmmd == "About") {
                 Utilities.inform(factory.about());
             } else if (cmmd == "Help") {
@@ -108,20 +109,12 @@ public class AppPanel extends JPanel implements ActionListener, PropertyChangeLi
         Utilities.error(e);
     }
 
-    public void propertyChange(PropertyChangeEvent evt) {
-
+    public void propertyChange(PropertyChangeEvent event) {
     }
 
     public Model getModel() {
         return model;
     }
 
-    public void setModel(Model m) {
-        this.model.removePropertyChangeListener(this);
-        this.model = m;
-        this.model.initSupport();
-        this.model.addPropertyChangeListener(this);
-        view.setModel(this.model);
-        model.changed();
-    }
+
 }
