@@ -3,11 +3,12 @@ package mvc;
 import javax.swing.*;
 import java.beans.*;
 
+
 public class View extends JPanel implements PropertyChangeListener {
     protected Model model;
 
-    public View(Model model){
-        this.model=model;
+    public View(Model model) {
+        this.model = model;
         model.addPropertyChangeListener(this);
     }
 
@@ -16,9 +17,11 @@ public class View extends JPanel implements PropertyChangeListener {
         this.model = model;
         this.model.initSupport();
         this.model.addPropertyChangeListener(this);
+        propertyChange(null);
     }
 
     public void propertyChange(PropertyChangeEvent arg0) {
         repaint();
     }
+
 }
